@@ -40,8 +40,8 @@ You are ready to go 🚀
     update.message.reply_text(start_text)
 
 
-def echo(update, context):
-    """Echo the user message."""
+def chat(update, context):
+    """Chat with the message."""
     telegram_id = str(update.message.chat.id)
     message = update.message.text
     answer = generate_response(message, telegram_id)
@@ -116,7 +116,7 @@ def main():
     dp.add_handler(CommandHandler("reset", reset))
 
     # message handler
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.text, chat))
     dp.add_handler(MessageHandler(Filters.voice, handle_voice_message))
 
     # log all errors
